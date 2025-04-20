@@ -32,12 +32,11 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "github-actions@github.com"
-        git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}".insteadOf "https://github.com"
-        # Esto asegura que las operaciones git se realicen usando el token de autenticación
+        git config --global url."https://x-access-token:ACCESS_TOKEN".insteadOf "https://github.com"
 
     - name: Deploy to GitHub Pages
       run: |
         cd mi-app
         npm run deploy
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Autenticación usando el token de GitHub
+        ACCESS_TOKEN: ACCESS_TOKEN  # Usar el PAT en el flujo de trabajo
