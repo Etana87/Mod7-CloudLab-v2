@@ -20,15 +20,17 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd mi-app  # Cambiar al directorio donde está tu aplicación
+        cd mi-app
         npm install
 
     - name: Build the app
       run: |
-        cd mi-app  # Cambiar al directorio donde está tu aplicación
+        cd mi-app
         npm run build
 
     - name: Deploy to GitHub Pages
       run: |
-        cd mi-app  # Cambiar al directorio donde está tu aplicación
+        cd mi-app
         npm run deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Autenticación usando el token de GitHub
