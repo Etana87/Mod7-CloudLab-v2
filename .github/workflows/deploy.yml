@@ -28,10 +28,12 @@ jobs:
         cd mi-app
         npm run build
 
-    - name: Set up Git configuration
+    - name: Configure Git credentials
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "github-actions@github.com"
+        git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}".insteadOf "https://github.com"
+        # Esto asegura que las operaciones git se realicen usando el token de autenticación
 
     - name: Deploy to GitHub Pages
       run: |
