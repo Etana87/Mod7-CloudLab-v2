@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Este es el flujo que se activará cuando hagas un push a la rama main
+      - main
 
 jobs:
   build:
@@ -16,13 +16,19 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Asegúrate de que la versión de Node sea la correcta
+        node-version: '14'
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd mi-app  # Cambiar al directorio donde está tu aplicación
+        npm install
 
     - name: Build the app
-      run: npm run build
+      run: |
+        cd mi-app  # Cambiar al directorio donde está tu aplicación
+        npm run build
 
     - name: Deploy to GitHub Pages
-      run: npm run deploy
+      run: |
+        cd mi-app  # Cambiar al directorio donde está tu aplicación
+        npm run deploy
