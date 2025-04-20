@@ -19,14 +19,12 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
-      run: |
-        cd mi-app
-        npm install
+      working-directory: ./mi-app
+      run: npm install
 
     - name: Build the app
-      run: |
-        cd mi-app
-        npm run build
+      working-directory: ./mi-app
+      run: npm run build
 
     - name: Configure Git credentials
       run: |
@@ -35,6 +33,5 @@ jobs:
         git config --global url."https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com".insteadOf "https://github.com"
 
     - name: Deploy to GitHub Pages
-      run: |
-        cd mi-app
-        npm run deploy
+      working-directory: ./mi-app
+      run: npm run deploy
